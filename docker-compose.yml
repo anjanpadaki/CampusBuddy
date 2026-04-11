@@ -11,6 +11,7 @@ services:
     restart: unless-stopped
 
   backend:
+    image: campusbuddy-backend:latest
     build:
       context: ./backend
       dockerfile: Dockerfile
@@ -26,6 +27,7 @@ services:
     restart: unless-stopped
 
   frontend:
+    image: campusbuddy-frontend:latest
     build:
       context: ./frontend
       dockerfile: Dockerfile
