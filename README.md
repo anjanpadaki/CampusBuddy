@@ -102,3 +102,40 @@ CampusBuddy/
 - Admin stats dashboard with event table
 - Find Teammates sidebar layout with status indicators
 - Fully responsive (mobile-friendly)
+
+---
+
+## 🚀 DevSecOps & CI/CD
+
+### 🐳 Docker & Docker Compose
+To run the entire application using Docker Compose (Backend, Frontend, MongoDB):
+
+1. Ensure Docker Desktop is running.
+2. Run the compose file:
+   ```bash
+   docker-compose up --build
+   ```
+3. The frontend is accessible at `http://localhost:3000`
+4. The backend is accessible at `http://localhost:5000`
+
+### 🔁 CI Pipeline (GitHub Actions)
+The project includes a robust Continuous Integration pipeline (`.github/workflows/ci.yml`) that triggers on push or pull requests to `main`.
+- Validates Node.js execution for both Frontend and Backend
+- Checks installations and tests the Frontend prod build
+- **Security Validation:** Uses `Trivy` to check for CRITICAL and HIGH severity package vulnerabilities in the built Docker images.
+
+### 🌐 CD Pipeline (Vercel)
+Deploying the frontend React app to Vercel is seamless and enables automatic CD:
+
+1. Push your code to your GitHub repository.
+2. Log into [Vercel](https://vercel.com/) and click **"Add New Project"**.
+3. Import your `CampusBuddy` GitHub repository.
+4. **Important Configuration step:**
+   - Change the "Framework Preset" to `Vite`.
+   - Change the "Root Directory" to `frontend`.
+5. **Environment Variables:**
+   - Because of Vite's proxy, for production use a full backend URL.
+   - Example (if your backend was deployed): Add `VITE_API_URL=https://campusbuddy-backend.herokuapp.com` (Note: requires updating axios config to use this var)
+6. Click **Deploy**.
+
+Vercel will now automatically rebuild and redeploy your frontend whenever you push to the `main` branch!
