@@ -1,141 +1,132 @@
-# CampusBuddy 🎓
+# 🚀 CampusBuddy 🎓
 
-A full-stack MERN campus event & teammate-finding platform with role-based access control.
+A full-stack **MERN (MongoDB, Express, React, Node.js)** application that helps students discover campus events and find teammates — built with **DevSecOps practices, CI/CD pipelines, and containerization**.
 
-## 🚀 Quick Start
+---
 
-### Prerequisites
-- Node.js v18+
-- MongoDB running locally (default: `mongodb://localhost:27017`)
+## 🌟 Overview
 
-### 1. Backend Setup
-```bash
-cd backend
-npm install
-node seedAdmin.js    # Creates admin account (run once)
-npm run dev          # Starts on http://localhost:5000
-```
+CampusBuddy is designed to simplify campus collaboration by:
 
-### 2. Frontend Setup
-```bash
-cd frontend
-npm install
-npm run dev          # Starts on http://localhost:3000
-```
+* 📅 Showcasing upcoming events
+* 🤝 Helping students find teammates
+* 🔐 Ensuring secure access with role-based authentication
+* ⚙️ Demonstrating real-world DevSecOps workflows
+
+---
+
+## ✨ Features
+
+### 👤 Student
+
+* View all upcoming events
+* Mark interest in events
+* Find teammates for specific events
+* Update team status (Has team / Looking for team)
+
+### 👨‍🏫 Admin
+
+* Create and manage events
+* Restricted access to event creation
+* Role-based authorization
+
+---
+
+## 🏗️ Tech Stack
+
+### 💻 Frontend
+
+* React.js
+* Axios
+* Tailwind CSS (or your styling framework)
+
+### 🖥️ Backend
+
+* Node.js
+* Express.js
+* MongoDB (Mongoose)
+
+### 🔐 Security
+
+* JWT Authentication
+* Password hashing with bcrypt
+* Role-Based Access Control (RBAC)
 
 ---
 
 
 
----
+## 🔁 CI/CD Pipeline
 
-## 📁 Project Structure
+### ⚙️ Continuous Integration
 
-```
-CampusBuddy/
-├── backend/
-│   ├── models/
-│   │   ├── User.js          # User schema with embedded interests
-│   │   └── Event.js         # Event schema
-│   ├── middleware/
-│   │   └── auth.js          # JWT auth + adminOnly middleware
-│   ├── routes/
-│   │   ├── auth.js          # POST /register, POST /login
-│   │   └── events.js        # All event endpoints
-│   ├── server.js            # Express entry point
-│   ├── seedAdmin.js         # Creates admin user
-│   └── .env                 # MONGO_URI, JWT_SECRET, PORT
-│
-└── frontend/
-    └── src/
-        ├── api/axios.js          # Axios with auto JWT header
-        ├── context/AuthContext   # Global auth state
-        ├── components/
-        │   ├── Navbar            # Sticky nav with role links
-        │   ├── EventCard         # Event display card
-        │   └── ProtectedRoute    # Role-based route guard
-        └── pages/
-            ├── LoginRegister     # Tabbed login/register
-            ├── StudentDashboard  # Events + interest + team status
-            ├── AdminDashboard    # Create/delete events
-            └── FindTeammates     # Browse teammates per event
-```
+Implemented using GitHub Actions
+
+On every push / pull request:
+
+* Install dependencies (frontend + backend)
+* Build frontend application
+* Validate backend execution
+* Build Docker images
+* Run security scans using Trivy
+
+### 🔐 Security Checks
+
+* Scans Docker images for:
+
+  * CRITICAL vulnerabilities
+  * HIGH severity issues
 
 ---
 
-## ⚙️ API Reference
+## 🚀 Continuous Deployment
 
-### Auth
-| Method | Endpoint            | Access  | Description           |
-|--------|--------------------|---------|-----------------------|
-| POST   | /api/auth/register | Public  | Register student      |
-| POST   | /api/auth/login    | Public  | Login (any role)      |
+### 🌐 Frontend Deployment
 
-### Events
-| Method | Endpoint                       | Access       | Description              |
-|--------|-------------------------------|--------------|--------------------------|
-| GET    | /api/events                   | Auth         | Upcoming events          |
-| GET    | /api/events/all               | Admin only   | All events               |
-| POST   | /api/events/create            | Admin only   | Create event             |
-| DELETE | /api/events/:eventId          | Admin only   | Delete event             |
-| GET    | /api/events/my-interests      | Auth         | My interests             |
-| POST   | /api/events/interest/:eventId | Auth         | Toggle interest          |
-| POST   | /api/events/team-status/:id   | Auth         | Update team status       |
-| GET    | /api/events/teammates/:id     | Auth         | Get interested students  |
+* Hosted on Vercel
+* Automatic deployment on every GitHub push
+
+### 🖥️ Backend Deployment
+
+* Hosted on Render (or similar)
+* Environment variables configured securely
 
 ---
 
-## 🔒 Security Features
-- Passwords hashed with **bcrypt** (salt rounds: 10)
-- **JWT** tokens (7-day expiry) stored in localStorage
-- Students **cannot register as admin** (role forced to `student`)
-- All admin endpoints protected at backend level with `adminOnly` middleware
-- Input validation on all APIs with **express-validator**
+## 🔄 CI/CD Workflow
+
+1. Developer pushes code to GitHub
+2. GitHub Actions runs CI pipeline
+3. Docker images are built and scanned
+4. Frontend auto-deploys on Vercel
+5. Backend auto-deploys on Render
 
 ---
 
-## 🎨 UI Features
-- Dark theme design system with CSS variables
-- Glassmorphism navbar with sticky positioning
-- Animated background blobs on auth page
-- Event cards with type badges, days-left indicator
-- Admin stats dashboard with event table
-- Find Teammates sidebar layout with status indicators
-- Fully responsive (mobile-friendly)
+
+
+## 🔐 DevSecOps Practices
+
+* Environment variables using `.env`
+* Secure JWT authentication
+* Password hashing (bcrypt)
+* Rate limiting (optional)
+* Helmet for HTTP security headers
+* Vulnerability scanning using Trivy
+* Containerized deployment with Docker
+
+
+
+## ⭐ Conclusion
+
+CampusBuddy demonstrates:
+
+* Full-stack MERN development
+* Secure authentication & authorization
+* CI/CD pipeline integration
+* Docker-based containerization
+* Real-world DevSecOps practices
 
 ---
 
-## 🚀 DevSecOps & CI/CD
-
-### 🐳 Docker & Docker Compose
-To run the entire application using Docker Compose (Backend, Frontend, MongoDB):
-
-1. Ensure Docker Desktop is running.
-2. Run the compose file:
-   ```bash
-   docker-compose up --build
-   ```
-3. The frontend is accessible at `http://localhost:3000`
-4. The backend is accessible at `http://localhost:5000`
-
-### 🔁 CI Pipeline (GitHub Actions)
-The project includes a robust Continuous Integration pipeline (`.github/workflows/ci.yml`) that triggers on push or pull requests to `main`.
-- Validates Node.js execution for both Frontend and Backend
-- Checks installations and tests the Frontend prod build
-- **Security Validation:** Uses `Trivy` to check for CRITICAL and HIGH severity package vulnerabilities in the built Docker images.
-
-### 🌐 CD Pipeline (Vercel)
-Deploying the frontend React app to Vercel is seamless and enables automatic CD:
-
-1. Push your code to your GitHub repository.
-2. Log into [Vercel](https://vercel.com/) and click **"Add New Project"**.
-3. Import your `CampusBuddy` GitHub repository.
-4. **Important Configuration step:**
-   - Change the "Framework Preset" to `Vite`.
-   - Change the "Root Directory" to `frontend`.
-5. **Environment Variables:**
-   - Because of Vite's proxy, for production use a full backend URL.
-   - Example (if your backend was deployed): Add `VITE_API_URL=https://campusbuddy-backend.herokuapp.com` (Note: requires updating axios config to use this var)
-6. Click **Deploy**.
-
-Vercel will now automatically rebuild and redeploy your frontend whenever you push to the `main` branch!
+💡 *Ready for deployment, demo, and evaluation.*
