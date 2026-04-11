@@ -25,12 +25,7 @@ npm run dev          # Starts on http://localhost:3000
 
 ---
 
-## 🔐 Default Credentials
 
-| Role    | Email                      | Password   |
-|---------|---------------------------|------------|
-| Admin   | admin@campusbuddy.com     | admin123   |
-| Student | Register via the UI       | Your choice|
 
 ---
 
