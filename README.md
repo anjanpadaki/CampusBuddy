@@ -115,7 +115,7 @@ On every push / pull request:
 * Vulnerability scanning using Trivy
 * Containerized deployment with Docker
 
-
+---
 
 ## ⭐ Conclusion
 
@@ -129,4 +129,4 @@ CampusBuddy demonstrates:
 
 ---
 
-💡 *Ready for deployment, demo, and evaluation.*
+
