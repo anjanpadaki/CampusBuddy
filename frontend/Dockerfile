@@ -5,6 +5,10 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm install
 COPY . .
+
+# Run unit tests
+RUN npm test
+
 RUN npm run build
 
 # Stage 2: Serve with Nginx
