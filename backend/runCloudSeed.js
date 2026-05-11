@@ -3,11 +3,13 @@ const dotenv = require('dotenv');
 
 dotenv.config();
 
-// The user's cloud URI
-const CLOUD_URI = "mongodb+srv://anjanpadaki27:mongoatlas27@cluster0.i5nvbgj.mongodb.net/campusbuddy?appName=Cluster0";
+// Use the MONGO_URI from .env or process environment
+const CLOUD_URI = process.env.MONGO_URI;
 
-// Force mongoose to use this URI
-process.env.MONGO_URI = CLOUD_URI;
+if (!CLOUD_URI) {
+    console.error("❌ MONGO_URI is not defined in environment variables.");
+    process.exit(1);
+}
 
 const seedAdmin = require('./seedAdmin'); // Wait, seedAdmin is a standalone script that connects itself.
 
