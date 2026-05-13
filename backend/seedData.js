@@ -75,6 +75,41 @@ const seedData = async () => {
         date: new Date(new Date().getTime() + 15 * 24 * 60 * 60 * 1000), // 15 days from now
         location: 'Seminar Hall A',
         createdBy: admin._id
+      },
+      {
+        eventName: 'Cloud Computing Summit',
+        type: 'Technical',
+        date: new Date(new Date().getTime() + 20 * 24 * 60 * 60 * 1000), // 20 days from now
+        location: 'Main Auditorium',
+        createdBy: admin._id
+      },
+      {
+        eventName: 'Inter-College Football',
+        type: 'Sports',
+        date: new Date(new Date().getTime() + 25 * 24 * 60 * 60 * 1000), // 25 days from now
+        location: 'Campus Ground',
+        createdBy: admin._id
+      },
+      {
+        eventName: 'Ethical Hacking Boot Camp',
+        type: 'Technical',
+        date: new Date(new Date().getTime() + 30 * 24 * 60 * 60 * 1000), // 30 days from now
+        location: 'Cyber Security Lab',
+        createdBy: admin._id
+      },
+      {
+        eventName: 'Annual Cultural Fest',
+        type: 'Cultural',
+        date: new Date(new Date().getTime() + 45 * 24 * 60 * 60 * 1000), // 45 days from now
+        location: 'Open Air Theatre',
+        createdBy: admin._id
+      },
+      {
+        eventName: 'UX/UI Design Sprint',
+        type: 'Workshop',
+        date: new Date(new Date().getTime() + 12 * 24 * 60 * 60 * 1000), // 12 days from now
+        location: 'Design Studio',
+        createdBy: admin._id
       }
     ];
 
